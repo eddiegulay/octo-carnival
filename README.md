@@ -83,3 +83,44 @@ python conditional_crawler.py
 - `crawl_single_domain(seed, discovered_domains, lock)`: Crawls a single domain and adds discovered domains to a set using multithreading.
   
 - `crawl_domains(seed_domains, output_file)`: Crawls a list of seed domains using multithreading and writes the discovered domains to an output file.
+
+
+Certainly! Here's a refined documentation for the `/password_bypass` directory:
+
+---
+
+### `/password_bypass` Directory
+
+The `/password_bypass` directory contains scripts and resources designed for bypassing password protection on FTP servers. 
+
+#### Files:
+
+1. **sites.txt**:  
+   - Description: Contains a list of domain names to be tested for password bypass.
+   - Format: Each line represents a different domain.
+
+2. **passwords.txt**:  
+   - Description: Contains a list of potential passwords to be used in the password bypass attempts.
+   - Format: Each line represents a different password.
+
+3. **login_results.txt**:  
+   - Description: Logs the results of the password bypass attempts.
+   - Format: Each entry includes:
+     - Domain name
+     - Login status (whether the domain was protected or allowed anonymous login)
+     - Results of the Hydra tool if used
+
+#### Scripts:
+
+1. **ftp_login_checker.sh**:  
+   - Description: Automates the process of testing FTP servers for vulnerabilities.
+   - Usage: Utilizes domains listed in `sites.txt` and passwords in `passwords.txt`.
+   - Functionality:  
+     - Attempts to login anonymously to each domain.
+     - If anonymous login fails, uses Hydra tool to attempt login with potential passwords.
+     - Logs results in `login_results.txt`.
+
+to run the script, use the following command:
+```sh
+./ftp_login_checker.sh domain_name.com
+```
