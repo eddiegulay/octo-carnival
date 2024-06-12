@@ -1,0 +1,4 @@
+finance.flit.tz
+flit.tz
+udsm.ac.tz
+tigo.co.tz
