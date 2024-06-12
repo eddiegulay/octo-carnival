@@ -21,7 +21,7 @@ echo "Domain $DOMAIN resolved to IP address $IP"
 
 # Step 1: Identify if the IP address has FTP server
 echo "Checking for FTP server on $IP..."
-nmap -p 21 --open -oG - "$IP" | awk '/21\/open/{print $2}' > ftp_servers.txt
+nmap -p 21 --open -oG - "$IP" | awk '/21\/open/{print $2}' >ftp_servers.txt
 
 # Check if FTP server was found
 if [ ! -s ftp_servers.txt ]; then
@@ -34,36 +34,28 @@ echo "Found FTP server on $IP"
 # Loop through each FTP server (in this case, just one)
 while read -r IP; do
     echo "Processing FTP server: $IP"
-    
+
     # Step 2: Check for anonymous login
     echo "Checking for anonymous login on $IP..."
-    anon_result=$(msfconsole -q -x "use auxiliary/scanner/ftp/anonymous; set RHOSTS $IP; run; exit" | tee anon_check_$IP.txt)
-    if grep -q "Anonymous FTP login allowed" <<< "$anon_result"; then
-        echo "Anonymous login allowed on $IP"
-    else
-        echo "Anonymous login not allowed on $IP"
-    fi
+    msfconsole -q -x "use auxiliary/scanner/ftp/anonymous; set RHOSTS $IP; run; exit" | tee anon_check_$IP.txt
+    grep -q "Anonymous FTP login allowed" anon_check_$IP.txt && echo "Anonymous login allowed on $IP" || echo "Anonymous login not allowed on $IP"
 
     # Step 3: Retrieve server details
     echo "Retrieving server details for $IP..."
-    version_result=$(msfconsole -q -x "use auxiliary/scanner/ftp/ftp_version; set RHOSTS $IP; run; exit" | tee version_info_$IP.txt)
-    
+    msfconsole -q -x "use auxiliary/scanner/ftp/ftp_version; set RHOSTS $IP; run; exit" | tee version_info_$IP.txt
+
     # Extract server details
-    FTP_VERSION=$(grep "Banner" version_info_$IP.txt | awk -F'Banner: ' '{print $2}' | tr -d '\r')
+    FTP_VERSION=$(grep "Banner" version_info_$IP.txt | awk -F'Banner: ' '{print $2}')
     echo "FTP server version for $IP: $FTP_VERSION"
 
     # Step 4: Check for vulnerabilities
     echo "Checking for vulnerabilities for FTP server version: $FTP_VERSION..."
-    vulnerability_result=$(msfconsole -q -x "search name:\"$FTP_VERSION\" type:exploit; exit" | tee vulnerability_$IP.txt)
+    msfconsole -q -x "search name:$FTP_VERSION type:exploit; exit" | tee vulnerability_$IP.txt
 
     # List found vulnerabilities
     echo "Vulnerabilities for $IP:"
-    if grep -q "exploit/" vulnerability_$IP.txt; then
-        grep "exploit/" vulnerability_$IP.txt
-    else
-        echo "No vulnerabilities found for $FTP_VERSION on $IP"
-    fi
+    grep "exploit/" vulnerability_$IP.txt || echo "No vulnerabilities found for $FTP_VERSION on $IP"
 
-done < ftp_servers.txt
+done <ftp_servers.txt
 
 echo "Script completed."
