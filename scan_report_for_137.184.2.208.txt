@@ -1,0 +1,41 @@
+Scan Report for 137.184.2.208
+Domain: finance.flit.tz
+Resolved IP: 137.184.2.208
+-----------------------------------------
+                                          
+-----------------------------------------
+Found FTP server on 137.184.2.208
+-----------------------------------------
+                                          
+-----------------------------------------
+Processing FTP server: 137.184.2.208
+Checking for anonymous login on 137.184.2.208...
+[0m[0mRHOSTS => 137.184.2.208
+[0m[1m[32m[+][0m 137.184.2.208:21      - 137.184.2.208:21 - Anonymous READ (220 Welcome to Flit Server Stress FTP service : BE RATIONAL WE OPENED THIS FOR SECURITY LESSONS.)
+[1m[34m[*][0m 137.184.2.208:21      - Scanned 1 of 1 hosts (100% complete)
+[1m[34m[*][0m Auxiliary module execution completed
+[0m
+Anonymous login not allowed on 137.184.2.208
+-----------------------------------------
+                                          
+-----------------------------------------
+Retrieving server details for 137.184.2.208 using Nmap...
+# Nmap 7.80 scan initiated Thu Jun 13 00:21:02 2024 as: nmap -sV -p 21 -oN nmap_version_137.184.2.208.txt 137.184.2.208
+Nmap scan report for 137.184.2.208
+Host is up (0.44s latency).
+
+PORT   STATE SERVICE VERSION
+21/tcp open  ftp     vsftpd 2.0.8 or later
+Service Info: Host: Welcome
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Thu Jun 13 00:21:17 2024 -- 1 IP address (1 host up) scanned in 14.84 seconds
+FTP server version for 137.184.2.208: 2.0.8 or later
+-----------------------------------------
+                                          
+-----------------------------------------
+Checking for vulnerabilities for FTP server version: 2.0.8 or later...
+[0m[1m[31m[-][0m No results from search
+[0m
+Vulnerabilities for 137.184.2.208:
+No vulnerabilities found for 2.0.8 or later on 137.184.2.208

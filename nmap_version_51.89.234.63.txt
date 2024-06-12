@@ -1,9 +1,0 @@
-# Nmap 7.80 scan initiated Thu Jun 13 00:10:39 2024 as: nmap -sV -p 21 -oN nmap_version_51.89.234.63.txt 51.89.234.63
-Nmap scan report for eunode2.zesha.net (51.89.234.63)
-Host is up (0.21s latency).
-
-PORT   STATE SERVICE VERSION
-21/tcp open  ftp     Pure-FTPd
-
-Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
-# Nmap done at Thu Jun 13 00:10:41 2024 -- 1 IP address (1 host up) scanned in 2.40 seconds
